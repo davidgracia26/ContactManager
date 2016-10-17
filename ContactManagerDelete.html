@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="ContactManager.css">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse">
+      <ul class="nav navbar-nav">
+        <li><a href = "ContactManagerHome.html">Home</a></li>
+        <li><a href = "ContactManagerAdd.html">Add Contact</a></li>
+        <li><a href = "ContactManagerEdit.html">Edit Contact</a></li>
+        <li class="active"><a href = "ContactManagerDelete.html">Delete Contact</a></li>
+      </ul>
+    </nav>
+
+    <h1>Welcome to Your Contact Manager</h1>
+    <h4>Thank you for choosing us as the place to manage your contacts.
+    </h4>
+
+    <div>
+    <input id="search" type="text" placeholder="Search" required>
+    <button id="searchContact" class="btn btn-default">Submit</button>
+    </div>
+
+    <p id="placeSearch">
+    </p>
+
+<!--Col here-->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-7">
+      <table class="table-striped">
+      <tr>
+        <thead>
+        <th>First Name:
+        </th>
+        <th> Last Name:
+        </th>
+        <th> Email Address:
+        </th>
+        <th> Telephone Number:
+        </th>
+      </thead>
+      </tr>
+      <tbody id="retrieve">
+      </tbody>
+      </table>
+      <div id="please">
+      </div>
+    </div>
+<!--col div-->
+<div class = "col-xs-5">
+    <div id ="formDiv" class="container-fluid">
+      <h1>Delete Contact Info:</h1>
+      <form>
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input id="firstName" type="text" class="form-control special" placeholder="First Name"/>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input id="lastName" type="text" class="form-control special" placeholder="Last Name"/>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input id="email" type="email" class="form-control special" placeholder="E-mail:"/>
+        </div>
+        <div class="form-group">
+          <label for="tel">Telephone Number:</label>
+          <input id="tel" type="text" class="form-control special" placeholder="Telephone Number:" maxlength="10"/>
+        </div>
+        <button id="deleteContact" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+
+    
+    <!--col here-->
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="ContactManagerDelete.js"></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form>
+      <label>
+        Credit Card Number:<input type="number" cols="12">
+      </label>
+      <br>
+      <label>
+        Credit Card Type:
+        <select id="Credit Card Type">
+          <option value="visa">Visa</option>
+          <option value="mastercard">MasterCard</option>
+          <option value="amex">American Express</option>
+        </select>
+      </label>
+      <br>
+      <label>
+        Expiration Date:<input type="date">
+      </label>
+      <button>Submit</button>
+    </form>
+    <script>
+      /*********************************************************
+       *
+       *   Test Form Script - Display form fields automatically
+       *
+       *********************************************************/
+      // loop through each form and handle submit event
+      var forms = document.getElementsByTagName('form');
+      for (var i=0;i<forms.length;i++) {
+        forms[i].addEventListener('submit', function(e){
+          e.preventDefault();
+          // display each form field id and value
+          var results = '';
+          var fields = forms[0].elements;
+          for (var k=0;k<fields.length;k++) {
+            if (fields[k].id) {
+              results += fields[k].id + '=' + fields[k].value + '\n';
+            }
+          }
+          // display results
+          alert(results);
+        });
+      }
+    </script>
+  </body>
+</html>
