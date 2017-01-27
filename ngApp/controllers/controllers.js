@@ -6,7 +6,7 @@ var contactManager;
             function HomeController() {
                 this.contacts = [];
                 this.showEdit = false;
-                var ss = sessionStorage.getItem('key');
+                var ss = localStorage.getItem('key');
                 if (ss == null) {
                     this.contacts = [];
                 }
@@ -22,17 +22,13 @@ var contactManager;
                     contact.id = this.contacts[this.contacts.length - 1].id + 1;
                 }
                 this.contacts.push(contact);
-                var change = JSON.stringify(this.contacts);
-                var myStorage = sessionStorage.setItem('key', change);
-                window.location.reload();
+                this.changeToJSON();
             };
             HomeController.prototype.deleteContact = function (id) {
                 for (var i = 0; i < this.contacts.length; i++) {
                     if (this.contacts[i].id == id) {
                         this.contacts.splice(i, 1);
-                        var change = JSON.stringify(this.contacts);
-                        var myStorage = sessionStorage.setItem('key', change);
-                        window.location.reload();
+                        this.changeToJSON();
                     }
                 }
             };
@@ -49,16 +45,17 @@ var contactManager;
                 for (var i = 0; i < this.contacts.length; i++) {
                     if (this.contacts[i].id == this.contactToEdit.id) {
                         this.contacts[i] = this.contactToEdit;
-                        var change = JSON.stringify(this.contacts);
-                        var myStorage = sessionStorage.setItem('key', change);
-                        window.location.reload();
+                        this.changeToJSON();
                     }
                 }
             };
             HomeController.prototype.removeAllContacts = function () {
                 this.contacts = [];
+                this.changeToJSON();
+            };
+            HomeController.prototype.changeToJSON = function () {
                 var change = JSON.stringify(this.contacts);
-                var myStorage = sessionStorage.setItem('key', change);
+                var myStorage = localStorage.setItem('key', change);
                 window.location.reload();
             };
             return HomeController;

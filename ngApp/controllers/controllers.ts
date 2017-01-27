@@ -6,7 +6,7 @@ namespace contactManager.Controllers {
         public contactToEdit;
         constructor() {
 
-            let ss = sessionStorage.getItem('key')
+            let ss = localStorage.getItem('key')
             if (ss == null) {
                 this.contacts = []
             } else {
@@ -23,18 +23,14 @@ namespace contactManager.Controllers {
             }
 
             this.contacts.push(contact);
-            let change = JSON.stringify(this.contacts);
-            let myStorage = sessionStorage.setItem('key', change)
-            window.location.reload();
+            this.changeToJSON();
         }
 
         public deleteContact(id) {
             for (var i = 0; i < this.contacts.length; i++) {
                 if (this.contacts[i].id == id) {
                     this.contacts.splice(i, 1);
-                    let change = JSON.stringify(this.contacts);
-                    let myStorage = sessionStorage.setItem('key', change)
-                    window.location.reload();
+                    this.changeToJSON();
                 }
             }
         }
@@ -54,9 +50,7 @@ namespace contactManager.Controllers {
             for (var i = 0; i < this.contacts.length; i++) {
                 if (this.contacts[i].id == this.contactToEdit.id) {
                     this.contacts[i] = this.contactToEdit;
-                    let change = JSON.stringify(this.contacts);
-                    let myStorage = sessionStorage.setItem('key', change)
-                    window.location.reload();
+                    this.changeToJSON();
                 }
             }
 
@@ -64,10 +58,15 @@ namespace contactManager.Controllers {
 
         public removeAllContacts() {
             this.contacts = [];
+            this.changeToJSON();
+        }
+
+        public changeToJSON() {
             let change = JSON.stringify(this.contacts);
-            let myStorage = sessionStorage.setItem('key', change)
+            let myStorage = localStorage.setItem('key', change)
             window.location.reload();
         }
+
 
     }
     angular.module('contactManager').controller('HomeController', HomeController)
