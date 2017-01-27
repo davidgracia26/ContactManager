@@ -1,0 +1,35 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-dir-r {
+    flex-direction: row;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
+.flex-dir-c {
+    flex-direction: column;
+}
+
+.ai-c {
+    align-items: center;
+}
+
+.editFont {
+    font-size: 2em;
+}
+
+.title {
+    font-size: 3em;
+}
+
+.color-white {
+    color: white;
+}

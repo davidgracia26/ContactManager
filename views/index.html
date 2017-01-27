@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="contactManager">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../ngApp/css/site.css" />
+</head>
+
+<body ng-controller="HomeController as controller" ng-cloak>
+
+    <nav class="navbar navbar-inverse">
+        <div class="flex flex-dir-r jc-c title color-white">
+            Contact Manager
+        </div>
+    </nav>
+
+    <div class="flex flex-dir-r jc-c">
+        <form ng-submit="controller.addContact(contact)" ng-hide="controller.showEdit">
+            <input ng-model="contact.name" placeholder="name" required ng-trim="true" />
+            <input ng-model="contact.phone" placeholder="phone" required ng-trim="true" />
+            <input ng-model="contact.email" placeholder="email" required ng-trim="true" type="email">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+
+    <div class="flex flex-dir-c ai-c" ng-show="controller.showEdit">
+        <div>
+            <p class="editFont">
+                Edit Info
+            </p>
+        </div>
+        <div class="flex flex-dir-r jc-c">
+            <form ng-submit="controller.editContact()">
+                <input ng-model="controller.contactToEdit.name" placeholder="name" required/>
+                <input ng-model="controller.contactToEdit.phone" placeholder="phone" required/>
+                <input ng-model="controller.contactToEdit.email" placeholder="email" required/>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+
+    </div>
+    <br />
+
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Phone #
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+
+            </th>
+            <th>
+                <button class="btn btn-danger" ng-click="controller.removeAllContacts()">Remove All Contacts</button>
+            </th>
+        </tr>
+        <tr ng-repeat="indContact in controller.contacts track by $index">
+            <td>
+                {{indContact.name}}
+            </td>
+            <td>
+                {{indContact.phone}}
+            </td>
+            <td>
+                {{indContact.email}}
+            </td>
+            <td>
+                <button ng-click="controller.showEditButton(indContact.id)" class="btn btn-success">Edit</button>
+            </td>
+            <td>
+                <button ng-click="controller.deleteContact(indContact.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+    <script src="../bower_components\jquery\dist\jquery.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="../ngApp/app.js"></script>
+    <script src="../ngApp/controllers/controllers.js"></script>
+</body>
+
+</html>
